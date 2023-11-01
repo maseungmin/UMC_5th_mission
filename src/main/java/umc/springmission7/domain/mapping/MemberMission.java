@@ -1,6 +1,7 @@
 package umc.springmission7.domain.mapping;
 
 import lombok.*;
+import umc.springmission7.domain.Member;
 import umc.springmission7.domain.Mission;
 import umc.springmission7.domain.common.BaseEntity;
 import umc.springmission7.domain.enums.MissionStatus;
@@ -19,4 +20,12 @@ public class MemberMission extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private MissionStatus status;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="member_id")
+    private Member member;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="mission_id")
+    private Mission mission;
 }
