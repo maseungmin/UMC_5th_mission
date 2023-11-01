@@ -1,7 +1,9 @@
-package umc.springmission7.domain;
+package umc.springmission7.domain.mapping;
 
 import lombok.*;
+import umc.springmission7.domain.Mission;
 import umc.springmission7.domain.common.BaseEntity;
+import umc.springmission7.domain.enums.MissionStatus;
 
 import javax.persistence.*;
 
@@ -10,11 +12,11 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class ReviewImage extends BaseEntity {
+public class MemberMission extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String imageUrl;
+    @Enumerated(EnumType.STRING)
+    private MissionStatus status;
 }

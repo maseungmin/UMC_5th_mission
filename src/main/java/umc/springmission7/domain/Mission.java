@@ -5,6 +5,8 @@ import umc.springmission7.domain.common.BaseEntity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -21,5 +23,12 @@ public class Mission extends BaseEntity {
     private LocalDate datetime;
 
     private String content;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="store_id")
+    private Store store;
+
+    @OneToMany(mappedBy = "mission", cascade = CascadeType.ALL)
+    private List<Review> memberMissionList = new ArrayList<>();
 
 }
